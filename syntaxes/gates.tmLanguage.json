@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Gates",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#string"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "comment.gates"
+            }
+          },
+          "end": "$",
+          "name": "comment.line.double-slash.gates"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "string.begin.gates"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "string.end.gates"
+            }
+          },
+          "name": "string.quoted.double.gates",
+          "patterns": [
+            {
+              "include": "#string_escaped_char"
+            },
+            {
+              "include": "#string_placeholder"
+            }
+          ]
+        }
+      ]
+    },
+    "string_escaped_char": {
+      "patterns": [
+        {
+          "match": "\\\\([0-7]{3}|[abfnrtv\\\\'\"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})",
+          "name": "constant.character.escape.gates"
+        },
+        {
+          "match": "\\\\[^0-7xuUabfnrtv\\'\"]",
+          "name": "invalid.illegal.unknown-escape.gates"
+        }
+      ]
+    },
+    "string_placeholder": {
+      "patterns": [
+        {
+          "match": "%(\\[\\d+\\])?([\\+#\\-0\\x20]{,2}((\\d+|\\*)?(\\.?(\\d+|\\*|(\\[\\d+\\])\\*?)?(\\[\\d+\\])?)?))?[vT%tbcdoqxXUbeEfFgGsp]",
+          "name": "constant.other.placeholder.gates"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.gates"
+}
