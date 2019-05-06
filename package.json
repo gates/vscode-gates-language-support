@@ -1,7 +1,8 @@
 {
-  "name": "gates-language-support",
-  "displayName": "Gates Language Support",
-  "description": "Gates language support.",
+  "name": "gates",
+  "displayName": "Gates",
+  "description": "Gates language support for Visual Studio Code.",
+  "publisher": "lujjjh",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.33.0"
@@ -9,6 +10,10 @@
   "categories": [
     "Programming Languages"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gates/vscode-gates-language-support.git"
+  },
   "contributes": {
     "languages": [
       {
